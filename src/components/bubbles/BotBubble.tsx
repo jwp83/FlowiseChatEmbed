@@ -42,7 +42,15 @@ const defaultFeedbackColor = '#3B81F6';
 export const BotBubble = (props: Props) => {
   let botDetailsEl: HTMLDetailsElement | undefined;
 
-  Marked.setOptions({ isNoP: false, sanitize: props.renderHTML !== undefined ? !props.renderHTML : true });
+  Marked.setOptions({ 
+    isNoP: false
+    // , sanitize: props.renderHTML !== undefined ? !props.renderHTML : true 
+    , sanitize: false
+    , gfm: true
+    , smartLists: true
+    , tables: true
+    // , breaks: true
+  });
 
   const [rating, setRating] = createSignal('');
   const [feedbackId, setFeedbackId] = createSignal('');
@@ -63,6 +71,7 @@ export const BotBubble = (props: Props) => {
       el.querySelectorAll('a, h1, h2, h3, h4, h5, h6, strong, em, blockquote, li').forEach((element) => {
         (element as HTMLElement).style.color = textColor;
       });
+      
 
       // Code blocks (with pre) get white text
       el.querySelectorAll('pre').forEach((element) => {

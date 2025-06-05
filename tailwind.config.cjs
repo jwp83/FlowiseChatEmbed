@@ -44,6 +44,17 @@ module.exports = {
             animation: {
                 'fade-in': 'fade-in 0.3s ease-out'
             }
+            ,// 여기를 추가합니다.
+            typography: ({ theme }) => ({ // theme 함수를 사용하여 다른 테마 값에 접근 가능
+                DEFAULT: { // 기본 prose 스타일 설정
+                    css: {
+                        // 순서가 있는 목록의 기본 번호 매김 제거
+                        'ol': {
+                            'list-style-type': 'square'
+                        }
+                    },
+                },
+            }),
         }
     },
     plugins: [
